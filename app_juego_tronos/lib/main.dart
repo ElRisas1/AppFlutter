@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:app_juego_tronos/PantallaPrincipal.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const Aplicacion());
+  print("Completado Boy");
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class Aplicacion extends StatelessWidget {
+  const Aplicacion({super.key});
 
   @override
   Widget build(BuildContext context) {
