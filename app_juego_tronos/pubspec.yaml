@@ -1,5 +1,5 @@
 name: app_juego_tronos
-description: "A new Flutter project."
+description: "A Game of Thrones Flutter project."
 publish_to: 'none'
 version: 0.1.0
 
@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
