@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_juego_tronos/PantallaPrincipal.dart';
+import 'PantallaPrincipal.dart';
 
 void main() {
   runApp(const Aplicacion());
