@@ -4,7 +4,7 @@ class Personajegot {
   final String culture;
   final String born;
   final String died;
-
+  
 
 
   const Personajegot({required this.name, required this.gender, required this.culture, required this.born, required this.died});

@@ -17,5 +17,5 @@ class Aplicacion extends StatelessWidget {
       title: 'Juego de tronos personaje',
       home: PantallaPrincipal(title: "Pantalla Inicio"),
     );
-  }
+  } 
 }
