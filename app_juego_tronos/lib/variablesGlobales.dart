@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:app_juego_tronos/personajegot.dart';
 
-class VariablesglobalesPersonajes {
+class variablesGlobales {
 
-  static String hola = "HOOOLA";
+  //static String hola = "sii";
+
+  static List <Personajegot> personajesFav = [];
 
 }
+
