@@ -102,7 +102,7 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
               const Padding(padding: EdgeInsets.all(40)),
               Text(personajeAPI, style: const TextStyle(fontSize: 16, color: Color.fromARGB(255, 28, 129, 107))),
 
-              const Padding(padding: EdgeInsets.all(10 )),
+              const Padding(padding: EdgeInsets.all(10)),
               ElevatedButton(onPressed: (){
                 print("Button guardar en Fav");
                 variablesGlobales.personajesFav.add(personajeAPIGuardar);

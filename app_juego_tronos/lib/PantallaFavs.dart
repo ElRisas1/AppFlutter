@@ -1,3 +1,6 @@
+
+import 'package:app_juego_tronos/variablesGlobales.dart';
+import 'package:app_juego_tronos/visualizarPersonaje.dart';
 import 'package:flutter/material.dart';
 import 'PantallaPrincipal.dart';
 
@@ -20,14 +23,21 @@ class _PantallaFavsState extends State<PantallaFavs>{
     
   }
 
+  void MostrarPersonaje(int listIndex){
+    print("pulsado $listIndex");
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => VisualizarPersonaje(title:"Pantalla Info personaje",personajeRecibido: variablesGlobales.personajesFav[listIndex])));
+  }
+
   Widget build(BuildContext context) {
-    return  const Scaffold(
-      body: Center(child:Column(mainAxisAlignment: MainAxisAlignment.center,
-          children:[
-            Text("Favoritos")
-          ]
-        ),
-      ),
+    return  Scaffold(
+      appBar: AppBar(title: const Text("Favoritos")),
+      body:
+            ListView.separated(itemBuilder: (context, index) {
+              return ListTile(title: TextButton(onPressed: () => MostrarPersonaje(index),
+              child: Text(variablesGlobales.personajesFav[index].name)));
+            }, 
+            separatorBuilder: (context, index) => const Divider(height: 40), 
+            itemCount: variablesGlobales.personajesFav.length),
     );
   }
 }
