@@ -18,6 +18,8 @@ class PantallaPersonajes extends StatefulWidget {
 
 class _PantallaPersonajesState extends State<PantallaPersonajes>{
 
+    String cantidadPersonajes = "?page=1&pageSize=10";
+
     @override
     void initState(){
     super.initState();
@@ -26,19 +28,17 @@ class _PantallaPersonajesState extends State<PantallaPersonajes>{
 
   void getPersonaje() async {
 
-    final url = Uri.parse("https://anapioficeandfire.com/api/characters/7}");
+    final url = Uri.parse("https://anapioficeandfire.com/api/characters$cantidadPersonajes}");
     final response = await http.get(url);
     if (response.statusCode == 200) {
       print("Invocando personaje destacado...");
       final json = response.body;
       Personajegot personajes = Personajegot.fromJson(jsonDecode(json));
         
-      //personajeAPIGuardar = personaje;
-      //comprobarInfo(personaje);
-
-      //personajeAPI = "PERSONAJE DESTACADO: \n\n Nombre: ${personaje.name} \n Genero: ${vacio4 + personaje.gender}\n Fecha Nacimiento: ${vacio1 + personaje.born} \n Fecha de fallecimiento: ${vacio2 + personaje.died} \n Cultura: ${vacio3 + personaje.culture}";
+      variablesGlobales.personajesListaApi.add(personajes);
+      
     } else {
-      //personajeAPI = "Error al cargar el personaje. Ja ja";
+      print("Error al cargar el personaje. Ja ja");
     }
     setState(() {}); // Actualiza la Interfaz de Usuario
   }
@@ -53,19 +53,19 @@ class _PantallaPersonajesState extends State<PantallaPersonajes>{
             itemBuilder: (context, index) {
               return ListTile(
                 title: TextButton(
-                  onPressed: () => MostrarPersonaje(index),
+                  onPressed: () => print("Boton pulsao"),//MostrarPersonaje(index),
                   child: Text(variablesGlobales.personajesListaApi[index].name),
                 ),
               );
             },
-            separatorBuilder: (context, index) => const Divider(height: 40),
+            separatorBuilder: (context, index) => const Divider(height: 30),
             itemCount: variablesGlobales.personajesListaApi.length,
           ),
         ),
         ElevatedButton(
           onPressed: () {
             print("Button Fav pressed");
-            CambiarPantallaFav();
+            //CambiarPantallaFav();
           },
           child: const Text("Favoritos"),
         ),
