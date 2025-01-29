@@ -38,7 +38,7 @@ class _PantallaPersonajesState extends State<PantallaPersonajes>{
       variablesGlobales.personajesListaApi.add(personajes);
       
     } else {
-      print("Error al cargar el personaje. Ja ja");
+      print("Error al cargar el personaje. Ja ja ");
     }
     setState(() {}); // Actualiza la Interfaz de Usuario
   }
