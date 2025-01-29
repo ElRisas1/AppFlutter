@@ -3,6 +3,7 @@ import 'PantallaPrincipal.dart';
 import 'package:http/http.dart' as http;
 import 'package:app_juego_tronos/personajegot.dart';
 import 'dart:convert';
+import 'variablesGlobales.dart';
 
 
 class PantallaPersonajes extends StatefulWidget {
@@ -43,20 +44,33 @@ class _PantallaPersonajesState extends State<PantallaPersonajes>{
   }
 
   Widget build(BuildContext context) {
-    return   Scaffold(
-      appBar: AppBar(title: const Text("Lista de Personajes")),
-      body: Center(child:Column(mainAxisAlignment: MainAxisAlignment.start,
-          children:[
-            const Text("Personajes"),
-            
-            const Padding(padding: EdgeInsets.all(30)),
-            ElevatedButton(onPressed: (){
-                print("Pasando a siguiente página...");
-
-              }, child: const Text("Siguiente página")),
-          ]
+    return  Scaffold(
+    appBar: AppBar(title: const Text("Lista de Personajes")),
+    body: Column(
+      children: [
+        Expanded(
+          child: ListView.separated(
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: TextButton(
+                  onPressed: () => MostrarPersonaje(index),
+                  child: Text(variablesGlobales.personajesListaApi[index].name),
+                ),
+              );
+            },
+            separatorBuilder: (context, index) => const Divider(height: 40),
+            itemCount: variablesGlobales.personajesListaApi.length,
+          ),
         ),
-      ),
+        ElevatedButton(
+          onPressed: () {
+            print("Button Fav pressed");
+            CambiarPantallaFav();
+          },
+          child: const Text("Favoritos"),
+        ),
+      ],
+    ),     
     );
   }
 }
