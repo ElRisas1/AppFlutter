@@ -62,7 +62,6 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
 
   void getPersonaje() async {
 
-
     final url = Uri.parse("https://anapioficeandfire.com/api/characters/${randomNumber()}");
     final response = await http.get(url);
     if (response.statusCode == 200) {
@@ -80,7 +79,6 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
     setState(() {}); // Actualiza la Interfaz de Usuario
   }
 
-
   void CambiarPantallaFav(){
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PantallaFavs(title: "PantallaFavoritosUsuario")));
   }
@@ -88,8 +86,6 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PantallaPersonajes(title: "PantallaPersonajeAPI")));
   }
   
-
-
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -103,12 +99,16 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
               Text(personajeAPI, style: const TextStyle(fontSize: 16, color: Color.fromARGB(255, 28, 129, 107))),
 
               const Padding(padding: EdgeInsets.all(10)),
-              ElevatedButton(onPressed: (){
+              if(!variablesGlobales.personajesFav.contains(personajeAPIGuardar)) 
+                ElevatedButton(onPressed: (){
                 print("Button guardar en Fav");
-                variablesGlobales.personajesFav.add(personajeAPIGuardar);
+                setState(() {
+                  variablesGlobales.personajesFav.add(personajeAPIGuardar);
+                });
                 print(variablesGlobales.personajesFav);
-              }, child: const Text("Guardar en Favoritos")),
-
+              }, child: const Text("Guardar en Favoritos"))
+              else const Text("Guardado en Favoritos"),
+              
               const Padding(padding: EdgeInsets.all(60)),
               ElevatedButton(onPressed: (){
                 print("Button Fav pressed");

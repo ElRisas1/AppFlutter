@@ -2,7 +2,7 @@
 import 'package:app_juego_tronos/variablesGlobales.dart';
 import 'package:app_juego_tronos/visualizarPersonaje.dart';
 import 'package:flutter/material.dart';
-import 'PantallaPrincipal.dart';
+
 
 
 class PantallaFavs extends StatefulWidget {

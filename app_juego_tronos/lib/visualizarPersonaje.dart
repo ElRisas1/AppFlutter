@@ -1,6 +1,7 @@
 import 'package:app_juego_tronos/personajegot.dart';
+import 'package:app_juego_tronos/variablesGlobales.dart';
 import 'package:flutter/material.dart';
-import 'PantallaPrincipal.dart';
+
 
 
 class VisualizarPersonaje extends StatefulWidget {
@@ -52,7 +53,20 @@ class _VisualizarPersonajeState extends State<VisualizarPersonaje>{
       body: Center(child:Column(mainAxisAlignment: MainAxisAlignment.center, 
           children:[
             Text("Nombre: ${widget.personajeRecibido.name} \n Genero: ${vacio4 + widget.personajeRecibido.gender}\n Fecha Nacimiento: ${vacio1 + widget.personajeRecibido.born} \n Fecha de fallecimiento: ${vacio2 + widget.personajeRecibido.died} \n Cultura: ${vacio3 + widget.personajeRecibido.culture}",
-            style: const TextStyle(fontSize: 20, color: Colors.deepOrange),)
+            style: const TextStyle(fontSize: 20, color: Colors.deepOrange)),
+            
+            const Padding(padding: EdgeInsets.all(30)),
+            if (!variablesGlobales.personajesFav.contains(widget.personajeRecibido)) 
+              ElevatedButton(
+                onPressed: () {
+                print("Button guardar en favs pressed");
+                setState(() {
+                  variablesGlobales.personajesFav.add(widget.personajeRecibido);
+                });
+                },
+                child: const Text("Guardar en Favoritos"),
+              )
+            else const Text("Guardado en Favoritos") 
           ]
         ),
       ),
